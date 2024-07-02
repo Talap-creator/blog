@@ -8,6 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = [
     'web-production-62359.up.railway.app',
+    'king-prawn-app-llcn9.ondigitalocean.app',
     '127.0.0.1'
 ]
 SECRET_KEY = config('SECRET_KEY')
