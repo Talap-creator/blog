@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'king-prawn-app-llcn9.ondigitalocean.app',
+    'https://   king-prawn-app-llcn9.ondigitalocean.app',
     'https://web-production-62359.up.railway.app',
     'http://127.0.0.1'
 ]
@@ -121,8 +121,11 @@ CKEDITOR_5_CONFIGS = {
             {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Alignment', 'Indent', 'Outdent']},
             {'name': 'links', 'items': ['Link', 'Unlink']},
             {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalLine', 'SpecialChar']},
-            {'name': 'tools', 'items': ['Undo', 'Redo']},
+            {'name': 'tools', 'items': ['Undo', 'Redo','Maximize', 'Source']},
+            {'name': 'editing', 'items': ['Scayt']},
+            {'name': 'clipboard', 'items': ['Undo', 'Redo']}
         ],
+        'extraPlugins': ['imageUpload'],
         'language': 'en',
         'licenseKey': '',
         'placeholder': 'Start typing here...',
