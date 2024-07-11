@@ -115,17 +115,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CKEDITOR_5_UPLOAD_PATH = 'uploads/'
 CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar': [
-            {'name': 'styles', 'items': ['Format', 'Font', 'FontSize']},
-            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat']},
-            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Alignment', 'Indent', 'Outdent']},
-            {'name': 'links', 'items': ['Link', 'Unlink']},
-            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalLine', 'SpecialChar']},
-            {'name': 'tools', 'items': ['Undo', 'Redo','Maximize', 'Source']},
-            {'name': 'editing', 'items': ['Scayt']},
-            {'name': 'clipboard', 'items': ['Undo', 'Redo']}
+        "toolbar": [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "blockQuote",
+            "imageUpload"
         ],
-        'extraPlugins': ['imageUpload'],
+        'plugin': 'imageUpload',
         'language': 'en',
         'licenseKey': '',
         'placeholder': 'Start typing here...',
