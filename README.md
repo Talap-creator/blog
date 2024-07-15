@@ -40,9 +40,14 @@ This is a Django-based blog application that allows users to create, edit, and v
 4. **Create a `.env` file in the root directory of the project with the following content:**
 
     ```plaintext
-    DEBUG=True/False
-    SECRET_KEY=example
-    DATABASE_URL=postgres://postgres:password@host:port/db_name
+    DEBUG=True
+    SECRET_KEY=your_secret_key
+    DATABASE_NAME=your_database_name
+    DATABASE_USER=your_database_user
+    DATABASE_PASSWORD=your_database_password
+    DATABASE_HOST=your_database_host
+    DATABASE_PORT=your_database_port
+    DATABASE_SSLMODE=require
     ```
 
 5. **Run database migrations:**
