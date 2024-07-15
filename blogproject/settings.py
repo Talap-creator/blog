@@ -64,9 +64,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blogproject.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL')),
-    'ENGINE': 'django.db.backends.postgresql',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
+        'OPTIONS': {
+            'sslmode': os.getenv('DATABASE_SSLMODE', 'require'),
+        },
+    }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
