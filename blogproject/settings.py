@@ -27,8 +27,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://   king-prawn-app-llcn9.ondigitalocean.app',
-    'https://web-production-62359.up.railway.app',
+    'https://king-prawn-app-llcn9.ondigitalocean.app/',
     'http://127.0.0.1'
 ]
 
