@@ -107,9 +107,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_URL = 'workspace/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'workspace/staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'workspace/static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CKEDITOR_5_UPLOAD_PATH = 'uploads/'
 CKEDITOR_5_CONFIGS = {
