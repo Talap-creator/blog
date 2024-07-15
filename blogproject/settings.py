@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = [
-    'web-production-62359.up.railway.app',
     'king-prawn-app-llcn9.ondigitalocean.app',
     '127.0.0.1'
 ]
@@ -109,7 +108,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CKEDITOR_5_UPLOAD_PATH = 'uploads/'
 CKEDITOR_5_CONFIGS = {
