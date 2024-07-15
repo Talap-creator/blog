@@ -8,8 +8,7 @@ from django.core.management.utils import get_random_secret_key
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = [
-    'king-prawn-app-llcn9.ondigitalocean.app',
-    '127.0.0.1'
+    'king-prawn-app-llcn9.ondigitalocean.app'
 ]
 SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
@@ -27,8 +26,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://king-prawn-app-llcn9.ondigitalocean.app/',
-    'http://127.0.0.1'
+    'https://king-prawn-app-llcn9.ondigitalocean.app/'
 ]
 
 MIDDLEWARE = [
