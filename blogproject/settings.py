@@ -3,6 +3,7 @@ from pathlib import Path
 import dj_database_url
 from decouple import config
 from django.urls import reverse_lazy
+from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,8 +11,8 @@ ALLOWED_HOSTS = [
     'king-prawn-app-llcn9.ondigitalocean.app',
     '127.0.0.1'
 ]
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -62,17 +63,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blogproject.wsgi.application'
 
-if config('DATABASE_URL', default=None):
-    DATABASES = {
-        'default': dj_database_url.parse(config('DATABASE_URL'))
-    }
-else:
-    print(".env файл не найден. Будет использовано значение по умолчанию для DATABASE_URL.")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
 
 AUTH_PASSWORD_VALIDATORS = [
