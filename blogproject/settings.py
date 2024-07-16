@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'ofy-back-3inrc.ondigitalocean.app'
+    'https://ofy-back-3inrc.ondigitalocean.app'
 ]
 
 MIDDLEWARE = [
