@@ -22,21 +22,23 @@ def blogs(request):
 
 @csrf_exempt
 def ck_editor_5_upload_file(request):
-    if request.method == 'POST' and request.FILES.get('upload'):
-        uploaded_file = request.FILES['upload']
-        file_path = os.path.join(settings.MEDIA_ROOT, 'blog_images', uploaded_file.name)
-        file_url = settings.MEDIA_URL + 'blog_images/' + uploaded_file.name
+    if request.method == 'POST' and request.FILES.getlist('upload'):
+        uploaded_files = request.FILES.getlist('upload')
+        file_urls = []
 
-        try:
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        for uploaded_file in uploaded_files:
+            file_path = os.path.join(settings.MEDIA_ROOT, 'blog_images', uploaded_file.name)
+            file_url = settings.MEDIA_URL + 'blog_images/' + uploaded_file.name
 
-            with open(file_path, 'wb+') as destination:
-                for chunk in uploaded_file.chunks():
-                    destination.write(chunk)
+            try:
+                os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-            return JsonResponse({'uploaded': True, 'url': file_url})
-        
-        except Exception as e:
-            return JsonResponse({'uploaded': False, 'error': str(e)})
-    
+                with open(file_path, 'wb+') as destination:
+                    for chunk in uploaded_file.chunks():
+                        destination.write(chunk)
+
+                file_urls.append(file_url)
+            except Exception as e:
+                return JsonResponse({'uploaded': False, 'error': str(e)})
+        return JsonResponse({'uploaded': True, 'urls': file_urls})
     return JsonResponse({'uploaded': False, 'error': 'Invalid request'})
