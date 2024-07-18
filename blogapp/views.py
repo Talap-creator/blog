@@ -37,7 +37,9 @@ def ck_editor_5_upload_file(request):
                     for chunk in uploaded_file.chunks():
                         destination.write(chunk)
 
-                file_urls.append({'url': file_url})
+                file_urls.append({
+                    'default': file_url,  # Adding 'default' key for CKEditor compatibility
+                })
             except Exception as e:
                 return JsonResponse({'uploaded': False, 'error': str(e)})
 
