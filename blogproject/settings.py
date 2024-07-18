@@ -159,7 +159,7 @@ CKEDITOR_5_CONFIGS = {
                 'imageStyle:alignRight'
             ],
             'upload': {
-                'multiple': True
+                'url': '/blog/ckeditor/upload/' 
             }
         },
         'licenseKey': '',
