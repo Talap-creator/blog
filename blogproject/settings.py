@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blogapp',
     'django_ckeditor_5',
+    'corsheaders',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -30,6 +31,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -133,7 +135,27 @@ CKEDITOR_5_CONFIGS = {
         'placeholder': 'Start typing here...',
     },
 }
+CORS_ALLOWED_ORIGINS = [
+    "https://ofy-front-l25u4.ondigitalocean.app",
+]
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS"
+]
+
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 
 
