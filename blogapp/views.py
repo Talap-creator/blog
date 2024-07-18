@@ -24,8 +24,8 @@ def blogs(request):
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
         uploaded_file = request.FILES['upload']
-        file_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
-        file_url = settings.MEDIA_URL + uploaded_file.name
+        file_path = os.path.join(settings.MEDIA_ROOT, 'blog_images', uploaded_file.name)
+        file_url = settings.MEDIA_URL + 'blog_images/' + uploaded_file.name
 
         try:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
