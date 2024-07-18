@@ -160,7 +160,7 @@ CKEDITOR_5_CONFIGS = {
         'licenseKey': '',
         'placeholder': 'Start typing here...',
     },
-}
+
 
 
 # Default primary key field type
