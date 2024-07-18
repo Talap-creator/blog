@@ -23,6 +23,6 @@ def blogs(request):
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
         uploaded_file = request.FILES['upload']
-        file_url = '/media/blog_images'
+        file_url = settings.MEDIA_URL + uploaded_file.name
         return JsonResponse({'uploaded': True, 'url': file_url})
     return JsonResponse({'uploaded': False, 'error': 'Invalid request'})
