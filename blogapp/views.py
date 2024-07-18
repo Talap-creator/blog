@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+import os
 from .models import BlogPost
 
 def blogs(request):
