@@ -137,7 +137,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_UPLOAD_PATH = 'blog_images/'
+CKEDITOR_UPLOAD_PATH = 'media/blog_images/'
 CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -150,16 +150,13 @@ CKEDITOR_5_CONFIGS = {
             "bulletedList",
             "numberedList",
             "blockQuote",
-            'undo', 
-            'redo',
             "imageUpload"
         ],
-        'image': {
-            'toolbar': ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side'],
-        },
-        'extraPlugins': ','.join([
-            'ImageUpload',  
-        ]),
+        'plugin': 'imageUpload',
+        'language': 'en',
+        'licenseKey': '',
+        'placeholder': 'Start typing here...',
+    },
         'licenseKey': '',
         'placeholder': 'Start typing here...',
     },
