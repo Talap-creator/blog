@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blogapp',
     'django_ckeditor_5',
+    'ckeditor_uploader'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -136,7 +137,8 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_5_UPLOAD_PATH = 'media/blog_images'
+CKEDITOR_UPLOAD_PATH = 'blog_images/'
+CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 CKEDITOR_5_CONFIGS = {
     'default': {
         "toolbar": [
@@ -148,20 +150,16 @@ CKEDITOR_5_CONFIGS = {
             "bulletedList",
             "numberedList",
             "blockQuote",
+            'undo', 
+            'redo',
             "imageUpload"
         ],
         'image': {
-            'toolbar': [
-                'imageTextAlternative',
-                '|',
-                'imageStyle:alignLeft',
-                'imageStyle:full',
-                'imageStyle:alignRight'
-            ],
-            'upload': {
-                'url': '/blog/ckeditor/upload/' 
-            }
+            'toolbar': ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side'],
         },
+        'extraPlugins': ','.join([
+            'ImageUpload',  
+        ]),
         'licenseKey': '',
         'placeholder': 'Start typing here...',
     },
