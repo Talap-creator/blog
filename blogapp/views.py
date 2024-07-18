@@ -23,9 +23,10 @@ def blogs(request):
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
         uploaded_file = request.FILES['upload']
-        file_url = settings.MEDIA_URL + uploaded_file.name
+        file_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
+        file_url = settings.MEDIA_URL + uploaded_file.name  # Ensure correct URL format
         try:
-            with open(settings.MEDIA_ROOT + uploaded_file.name, 'wb+') as destination:
+            with open(file_path, 'wb+') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
             return JsonResponse({'uploaded': True, 'url': file_url})
