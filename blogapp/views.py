@@ -24,5 +24,11 @@ def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
         uploaded_file = request.FILES['upload']
         file_url = settings.MEDIA_URL + uploaded_file.name
-        return JsonResponse({'uploaded': True, 'url': file_url})
+        try:
+            with open(settings.MEDIA_ROOT + uploaded_file.name, 'wb+') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+            return JsonResponse({'uploaded': True, 'url': file_url})
+        except Exception as e:
+            return JsonResponse({'uploaded': False, 'error': str(e)})
     return JsonResponse({'uploaded': False, 'error': 'Invalid request'})
