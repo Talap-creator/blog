@@ -150,8 +150,15 @@ CKEDITOR_5_CONFIGS = {
             "blockQuote",
             "imageUpload"
         ],
-        'plugin': 'imageUpload',
-        'language': 'en',
+        'image': {
+            'toolbar': [
+                'imageTextAlternative',
+                '|',
+                'imageStyle:alignLeft',
+                'imageStyle:full',
+                'imageStyle:alignRight'
+            ]
+        },
         'licenseKey': '',
         'placeholder': 'Start typing here...',
     },
