@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [
     'ofy-back-3inrc.ondigitalocean.app'
 ]
 SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 INSTALLED_APPS = [
     'corsheaders',
