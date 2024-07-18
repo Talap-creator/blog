@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'blogapp',
     'django_ckeditor_5',
-    'ckeditor_uploader'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
