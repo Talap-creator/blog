@@ -136,8 +136,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_UPLOAD_PATH = 'media/blog_images/'
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+CKEDITOR_5_UPLOAD_PATH = 'media/blog_images'
 CKEDITOR_5_CONFIGS = {
     'default': {
         "toolbar": [
@@ -151,16 +150,19 @@ CKEDITOR_5_CONFIGS = {
             "blockQuote",
             "imageUpload"
         ],
-        'plugin': 'imageUpload',
-        'language': 'en',
+        'image': {
+            'toolbar': [
+                'imageTextAlternative',
+                '|',
+                'imageStyle:alignLeft',
+                'imageStyle:full',
+                'imageStyle:alignRight'
+            ]
+        },
         'licenseKey': '',
         'placeholder': 'Start typing here...',
     },
-        'licenseKey': '',
-        'placeholder': 'Start typing here...',
-    },
-
-
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
