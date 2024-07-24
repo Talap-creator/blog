@@ -21,17 +21,13 @@ def blogs(request):
     }
     return JsonResponse(data)
 
+@csrf_exempt
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
-        uploaded_file = request.FILES.get('upload')
-        
-        # Define the file path where the file will be saved
-        file_path = os.path.join(settings.MEDIA_ROOT, 'blog_images', uploaded_file.name)
-        
-        # Save the file to the media directory
-        file_url = default_storage.save(file_path, uploaded_file)
-        file_url = os.path.join(settings.MEDIA_URL, 'blog_images', uploaded_file.name)
-
+        uploaded_file = request.FILES['upload']
+        file_path = os.path.join('blog_images', uploaded_file.name)
+        saved_path = default_storage.save(file_path, ContentFile(uploaded_file.read()))
+        file_url = default_storage.url(saved_path)
         return JsonResponse({
             'url': file_url,
             'uploaded': True,
