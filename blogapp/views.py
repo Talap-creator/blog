@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
 from django.conf import settings
 import os
 from .models import BlogPost
