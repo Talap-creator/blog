@@ -165,6 +165,12 @@ CKEDITOR_5_CONFIGS = {
         },
         'licenseKey': '',
         'placeholder': 'Start typing here...',
+        'upload': {
+            'url': '/blog/ckeditor/upload/',  # URL endpoint for file upload
+            'headers': {
+                'X-CSRFToken': '{{ csrf_token }}'  # Ensure CSRF token is included
+            }
+        }
     },
 }
 
