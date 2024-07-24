@@ -16,14 +16,16 @@ class BlogPost(models.Model):
     id = models.AutoField(primary_key=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     title = models.CharField(max_length=200)
-    content = CKEditor5Field()
+    content = CKEditor5Field(config_name='default')
     short_description = models.TextField(validators=[validate_word_count])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='blog_images/', null=True, blank=True)
-    author = models.CharField(max_length=100,default='admin')
+    author = models.CharField(max_length=100, default='admin')
+
     def __str__(self):
         return self.title
+        
 @receiver(pre_save, sender=BlogPost)
 def update_author(sender, instance, **kwargs):
     if not instance.author:
