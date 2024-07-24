@@ -136,7 +136,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_5_UPLOAD_PATH = 'uploads/'
+CKEDITOR_5_UPLOAD_PATH = 'blog_images/'
 
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -166,9 +166,9 @@ CKEDITOR_5_CONFIGS = {
         'licenseKey': '',
         'placeholder': 'Start typing here...',
         'upload': {
-            'url': '/blog/ckeditor/upload/',  # URL endpoint for file upload
+            'url': '/blog/ckeditor/upload/',  
             'headers': {
-                'X-CSRFToken': '{{ csrf_token }}'  # Ensure CSRF token is included
+                'X-CSRFToken': '{{ csrf_token }}' 
             }
         }
     },
