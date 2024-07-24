@@ -21,16 +21,19 @@ def blogs(request):
     }
     return JsonResponse(data)
 
-@csrf_exempt
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
-        uploaded_file = request.FILES['upload']
-        save_path = os.path.join(settings.MEDIA_ROOT, 'uploads', uploaded_file.name)
-        path = default_storage.save(save_path, uploaded_file)
-        url = default_storage.url(path)
+        uploaded_file = request.FILES.get('upload')
+        
+        # Define the file path where the file will be saved
+        file_path = os.path.join(settings.MEDIA_ROOT, 'blog_images', uploaded_file.name)
+        
+        # Save the file to the media directory
+        file_url = default_storage.save(file_path, uploaded_file)
+        file_url = os.path.join(settings.MEDIA_URL, 'blog_images', uploaded_file.name)
 
         return JsonResponse({
-            'url': url,
+            'url': file_url,
             'uploaded': True,
         })
     return JsonResponse({'error': 'Invalid request method or no file uploaded'}, status=400)
