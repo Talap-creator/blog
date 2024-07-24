@@ -136,7 +136,8 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_5_UPLOAD_PATH = 'media/blog_images'
+CKEDITOR_5_UPLOAD_PATH = 'uploads/'
+
 CKEDITOR_5_CONFIGS = {
     'default': {
         "toolbar": [
@@ -148,7 +149,10 @@ CKEDITOR_5_CONFIGS = {
             "bulletedList",
             "numberedList",
             "blockQuote",
-            "imageUpload"
+            "imageUpload",
+            "|",
+            "undo",
+            "redo"
         ],
         'image': {
             'toolbar': [
