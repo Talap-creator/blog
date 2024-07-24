@@ -24,6 +24,10 @@ def blogs(request):
 def ck_editor_5_upload_file(request):
     if request.method == 'POST' and request.FILES.get('upload'):
         uploaded_file = request.FILES['upload']
-        file_url = 'URL_TO_UPLOADED_FILE'
+        # Define the upload path within the MEDIA_ROOT
+        upload_path = os.path.join('blog_images', uploaded_file.name)
+        # Save the file using default storage
+        file_path = default_storage.save(upload_path, uploaded_file)
+        file_url = default_storage.url(file_path)
         return JsonResponse({'uploaded': True, 'url': file_url})
     return JsonResponse({'uploaded': False, 'error': 'Invalid request'})
